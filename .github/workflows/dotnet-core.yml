@@ -58,7 +58,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ matrix.preview_version }}
-      
+            
     - name: Install dependencies
       run: dotnet restore
       
