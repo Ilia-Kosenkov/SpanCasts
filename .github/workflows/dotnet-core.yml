@@ -1,0 +1,80 @@
+name: Build & Test
+
+on:
+  push:
+    branches: 
+      - main
+      - master
+      - staging
+    paths:
+      - '**/global.json'
+      - '**/*cs'
+      - '**/*il'
+      - '**/*csproj'
+      - '**/*ilproj'
+      - '**/*sln'
+  pull_request:
+    branches: 
+      - main
+      - master
+      - staging
+    paths:
+      - '**/global.json'
+      - '**/*cs'
+      - '**/*il'
+      - '**/*csproj'
+      - '**/*ilproj'
+      - '**/*sln'
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['Windows-latest', 'ubuntu-latest', 'macOS-latest']
+        preview_version: ['6.0.100-preview.2.21155.3']
+        
+    defaults:
+      run:
+        shell: pwsh
+    
+    runs-on: ${{ matrix.os }}
+    
+    name: ${{ matrix.os }}
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Setup .NET preview
+      if: matrix.preview_version != ''
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.preview_version }}
+      
+      # https://github.com/actions/setup-dotnet/issues/155
+    - name: Resetting nuget
+      run: |
+        dotnet clean -c Release && dotnet nuget locals all --clear
+      
+    - name: Install dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: |
+        dotnet build -c Release --no-restore
+
+    - name: Test .NET Standard 2.1 using .NET 6.0 preview
+      if: matrix.preview_version != ''
+      run: dotnet test -c Release --no-restore --verbosity normal -f net6.0
+
+    - name: Test .NET Standard 2.1 using .NET 5.0
+      run: dotnet test -c Release --no-restore --verbosity normal -f net5.0
+      
+    - name: Test .NET Standard 2.0 using Legacy Framework / Mono
+      run: dotnet test -c Release --no-restore --verbosity normal -f net4.8
