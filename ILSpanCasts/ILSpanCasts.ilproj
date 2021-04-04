@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.IL">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <MicrosoftNetCoreIlasmPackageVersion>5.0.0</MicrosoftNetCoreIlasmPackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="*.il" />
+    <Compile Condition="'$(TargetFramework)' == 'netstandard2.0'" Include="SpanViews_netstd2.0.il" />
+    <Compile Condition="'$(TargetFramework)' == 'netstandard2.1'" Include="SpanViews_netstd2.1.il" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Metadata.il" />
+  </ItemGroup>
+</Project>
