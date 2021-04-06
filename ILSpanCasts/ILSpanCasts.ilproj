@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
         <MicrosoftNetCoreIlasmPackageVersion>5.0.0</MicrosoftNetCoreIlasmPackageVersion>
-        <IlasmFlags>$(IlasmFlags) /PDBFMT=PORTABLE </IlasmFlags>
+        <IlasmFlags>$(IlasmFlags) -PDBFMT=PORTABLE </IlasmFlags>
     </PropertyGroup>
     <PropertyGroup>
       <PackageId>SpanCasts</PackageId>
