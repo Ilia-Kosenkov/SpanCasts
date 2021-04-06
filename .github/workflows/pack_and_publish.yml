@@ -4,10 +4,7 @@ on:
   push:
     tags:
       - 'v*'
-    branches:
-      - 'main'
-      - 'master'
-    
+   
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 jobs:
@@ -22,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.100-preview.2.21155.3
     
     - name: Install dependencies
       run: dotnet restore
@@ -41,7 +38,7 @@ jobs:
       with: 
         name: PackedLibrary
         path: ./Packed
-        
+
     - name: Publish to github package registry
       run: dotnet nuget push -s 'https://nuget.pkg.github.com/Ilia-Kosenkov/index.json' -k $GITHUB_TOKEN --skip-duplicate ./Packed/*nupkg
       

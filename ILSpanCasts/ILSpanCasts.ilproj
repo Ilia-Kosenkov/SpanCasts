@@ -1,14 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk.IL">
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <MicrosoftNetCoreIlasmPackageVersion>5.0.0</MicrosoftNetCoreIlasmPackageVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="*.il" />
-    <Compile Condition="'$(TargetFramework)' == 'netstandard2.0'" Include="SpanViews_netstd2.0.il" />
-    <Compile Condition="'$(TargetFramework)' == 'netstandard2.1'" Include="SpanViews_netstd2.1.il" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Metadata.il" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+        <MicrosoftNetCoreIlasmPackageVersion>5.0.0</MicrosoftNetCoreIlasmPackageVersion>
+        <IlasmFlags>$(IlasmFlags) /PDBFMT=PORTABLE </IlasmFlags>
+    </PropertyGroup>
+    <PropertyGroup>
+      <PackageId>SpanCasts</PackageId>
+      <Authors>Ilia Kosenkov</Authors>
+      <PackageDescription>Backwards-compatible casts of Span to Span2D.</PackageDescription>
+      <RepositoryUrl>https://github.com/Ilia-Kosenkov/SpanCasts</RepositoryUrl>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+      <MinVerTagPrefix>v</MinVerTagPrefix>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="MinVer" Version="2.3.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <Compile Remove="*.il" />
+        <Compile Condition="'$(TargetFramework)' == 'netstandard2.0'" Include="SpanViews_netstd2.0.il" />
+        <Compile Condition="'$(TargetFramework)' == 'netstandard2.1'" Include="SpanViews_netstd2.1.il" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="Metadata.il" />
+    </ItemGroup>
 </Project>
