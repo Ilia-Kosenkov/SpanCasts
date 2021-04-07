@@ -109,6 +109,44 @@
     IL_0034:  ret
   } 
 
+  .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> 
+          FromSpan<T>(valuetype [System.Memory]System.ReadOnlySpan`1<!!T> this,
+                      int32 height,
+                      int32 width) cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    
+    .maxstack  8
+    IL_0000:  ldarga.s   this
+    IL_0002:  call       instance bool valuetype [System.Memory]System.ReadOnlySpan`1<!!T>::get_IsEmpty()
+    IL_0007:  brtrue.s   IL_002f
+
+    IL_0009:  ldarg.2
+    IL_000a:  ldarg.1
+    IL_000b:  mul
+    IL_000c:  ldarga.s   this
+    IL_000e:  call       instance int32 valuetype [System.Memory]System.ReadOnlySpan`1<!!T>::get_Length()
+    IL_0013:  bgt.s      IL_001f
+
+    IL_0015:  ldarga.s   this
+    IL_0017:  ldarg.1
+    IL_0018:  ldarg.2
+    IL_0019:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!0> ILSpanCasts.Span2DView::FromSpan<!!0>(valuetype [System.Memory]System.ReadOnlySpan`1<!!0>&,
+                                                                                                                                                            int32,
+                                                                                                                                                            int32)
+    IL_001e:  ret
+
+    IL_001f:  ldstr      "`width` * `height` > `this.Length`."
+    IL_0024:  ldstr      "this"
+    IL_0029:  newobj     instance void [netstandard]System.ArgumentException::.ctor(string,
+                                                                                    string)
+    IL_002e:  throw
+
+    IL_002f:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Empty()
+    IL_0034:  ret
+  } 
+
+
 } 
 
 .class private sequential ansi sealed beforefieldinit ILSpanCasts.SpanView
@@ -132,9 +170,25 @@
     IL_0000:  ldarg.0
     IL_0001:  ret
   } 
+  
+  .method public hidebysig static valuetype ILSpanCasts.SpanView& 
+          AsView<T>(valuetype [System.Memory]System.ReadOnlySpan`1<!!T>& span) cil managed aggressiveinlining
+  {
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ret
+  } 
 
   .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T>& 
           AsSpan<T>(valuetype ILSpanCasts.SpanView& view) cil managed aggressiveinlining
+  {
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ret
+  } 
+  
+   .method public hidebysig static valuetype [System.Memory]System.ReadOnlySpan`1<!!T>& 
+          AsReadOnlySpan<T>(valuetype ILSpanCasts.SpanView& view) cil managed aggressiveinlining
   {
     .maxstack  8
     IL_0000:  ldarg.0
@@ -207,6 +261,23 @@
     IL_0000:  ldarg.0
     IL_0001:  ret
   } 
+  
+  .method public hidebysig static valuetype ILSpanCasts.Span2DView& 
+          AsView<T>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>& span) cil managed aggressiveinlining
+  {
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ret
+  } 
+  
+  .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>& 
+          AsReadOnlySpan<T>(valuetype ILSpanCasts.Span2DView& view) cil managed aggressiveinlining
+  {
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ret
+  } 
+  
 
   .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T> 
           FromSpan<T>(valuetype [System.Memory]System.Span`1<!!T>& span,
@@ -229,6 +300,30 @@
     IL_0010:  ldloca.s   V_1
     IL_0012:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!0>& ILSpanCasts.Span2DView::AsSpan<!!0>(valuetype ILSpanCasts.Span2DView&)
     IL_0017:  ldobj      valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>
+    IL_001c:  ret
+  } 
+    
+  .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> 
+          FromSpan<T>(valuetype [System.Memory]System.ReadOnlySpan`1<!!T>& span,
+                      int32 height,
+                      int32 width) cil managed aggressiveinlining
+  {
+    .maxstack  3
+    .locals init (valuetype ILSpanCasts.SpanView& V_0,
+             valuetype ILSpanCasts.Span2DView V_1)
+    IL_0000:  ldarg.0
+    IL_0001:  call       valuetype ILSpanCasts.SpanView& ILSpanCasts.SpanView::AsView<!!0>(valuetype [System.Memory]System.ReadOnlySpan`1<!!0>&)
+    IL_0006:  stloc.0
+    IL_0007:  ldloc.0
+    IL_0008:  ldarg.1
+    IL_0009:  ldarg.2
+    IL_000a:  newobj     instance void ILSpanCasts.Span2DView::.ctor(valuetype ILSpanCasts.SpanView&,
+                                                                     int32,
+                                                                     int32)
+    IL_000f:  stloc.1
+    IL_0010:  ldloca.s   V_1
+    IL_0012:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!0>& ILSpanCasts.Span2DView::AsReadOnlySpan<!!0>(valuetype ILSpanCasts.Span2DView&)
+    IL_0017:  ldobj      valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>
     IL_001c:  ret
   } 
 
