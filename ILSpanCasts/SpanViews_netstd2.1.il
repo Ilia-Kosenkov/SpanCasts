@@ -88,5 +88,45 @@
     IL_0036:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Empty()
     IL_003b:  ret
   } 
+  
+  .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> 
+          FromSpan<T>(valuetype [netstandard]System.ReadOnlySpan`1<!!T> this,
+                      int32 height,
+                      int32 width) cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  8
+    IL_0000:  ldarga.s   this
+    IL_0002:  call       instance bool valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_IsEmpty()
+    IL_0007:  brtrue.s   IL_0036
+
+    IL_0009:  ldarg.2
+    IL_000a:  ldarg.1
+    IL_000b:  mul
+    IL_000c:  ldarga.s   this
+    IL_000e:  call       instance int32 valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Length()
+    IL_0013:  bgt.s      IL_0026
+
+    IL_0015:  ldarga.s   this
+    IL_0017:  ldc.i4.0
+    IL_0018:  call       instance !0&  modreq ([netstandard]System.Runtime.InteropServices.InAttribute) valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Item(int32)
+    IL_001d:  ldarg.1
+    IL_001e:  ldarg.2
+    IL_001f:  ldc.i4.0
+    IL_0020:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::DangerousCreate(!0&,
+                                                                                                                                                                                                                                   int32,
+                                                                                                                                                                                                                                   int32,
+                                                                                                                                                                                                                                   int32)
+    IL_0025:  ret
+
+    IL_0026:  ldstr      "`width` * `height` > `this.Length`."
+    IL_002b:  ldstr      "this"
+    IL_0030:  newobj     instance void [netstandard]System.ArgumentException::.ctor(string,
+                                                                                    string)
+    IL_0035:  throw
+
+    IL_0036:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Empty()
+    IL_003b:  ret
+  } 
 
 } 
