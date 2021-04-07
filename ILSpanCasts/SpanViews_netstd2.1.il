@@ -109,11 +109,11 @@
 
     IL_0015:  ldarga.s   this
     IL_0017:  ldc.i4.0
-    IL_0018:  call       instance !0& valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Item(int32)
+    IL_0018:  call       instance !0&  modreq ([netstandard]System.Runtime.InteropServices.InAttribute) valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Item(int32)
     IL_001d:  ldarg.1
     IL_001e:  ldarg.2
     IL_001f:  ldc.i4.0
-    IL_0020:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan`1<!!T>::DangerousCreate(!0&,
+    IL_0020:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::DangerousCreate(!0&,
                                                                                                                                                                                                                                    int32,
                                                                                                                                                                                                                                    int32,
                                                                                                                                                                                                                                    int32)
