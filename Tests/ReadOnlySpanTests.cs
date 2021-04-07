@@ -7,7 +7,7 @@ namespace Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.All)]
-    public class SpanTests
+    public class ReadOnlySpanTests
     {
         [Test]
         public void Test_StackAlloc()
@@ -24,13 +24,10 @@ namespace Tests
                 }
             }
 
-            Span2D<int> span2d = buff.FromSpan(h, w);
+            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).FromSpan(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
-
-            span2d[13, 11] = 100500;
-            Assert.AreEqual(100500, buff[13 * w + 11]);
         }
         
         [Test]
@@ -48,13 +45,10 @@ namespace Tests
                 }
             }
 
-            Span2D<int> span2d = buff.FromSpan(h, w);
+            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).FromSpan(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
-
-            span2d[13, 11] = 100500;
-            Assert.AreEqual(100500, buff[13 * w + 11]);
         }
         
         [Test]
@@ -75,13 +69,10 @@ namespace Tests
                 }
             }
 
-            Span2D<int> span2d = buff.FromSpan(h, w);
+            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).FromSpan(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
-
-            span2d[13, 11] = 100500;
-            Assert.AreEqual(100500, buff[13 * w + 11]);
 
             GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true, true);
             GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true, true);
