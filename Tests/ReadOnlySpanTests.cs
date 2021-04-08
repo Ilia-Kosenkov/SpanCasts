@@ -74,13 +74,13 @@ namespace Tests
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
 
+            buff[13 * w + 11] = 500100;
             GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true, true);
             GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true, true);
 
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
 
-            buff[13 * w + 11] = 500100;
             Assert.AreEqual(500100, span2d[13, 11]);
         }
     }
