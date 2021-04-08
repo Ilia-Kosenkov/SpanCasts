@@ -105,4 +105,35 @@
     IL_003b:  ret
   } 
 
+}
+
+.class public abstract auto ansi sealed beforefieldinit ILSpanCasts.SpanExtensions
+       extends [netstandard]System.Object
+{
+  .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+  .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
+          ToSpan<T>(!!T[0...,0...] 'array') cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
+    IL_0006:  ldarg.0
+    IL_0007:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_000c:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&, int32)
+    IL_0011:  ret
+  } 
+  
+  .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
+          ToReadOnlySpan<T>(!!T[0...,0...] 'array') cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
+    IL_0006:  ldarg.0
+    IL_0007:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_000c:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&, int32)
+    IL_0011:  ret
+  } 
 } 
