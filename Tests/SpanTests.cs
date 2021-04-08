@@ -24,7 +24,7 @@ namespace Tests
                 }
             }
 
-            Span2D<int> span2d = buff.FromSpan(h, w);
+            Span2D<int> span2d = buff.ToSpan2D(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
@@ -48,7 +48,7 @@ namespace Tests
                 }
             }
 
-            Span2D<int> span2d = buff.FromSpan(h, w);
+            Span2D<int> span2d = buff.ToSpan2D(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
@@ -75,7 +75,7 @@ namespace Tests
                 }
             }
 
-            Span2D<int> span2d = buff.FromSpan(h, w);
+            Span2D<int> span2d = buff.ToSpan2D(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
