@@ -26,6 +26,8 @@
         <Compile Condition="'$(TargetFramework)' == 'netstandard2.1'" Include="SpanViews_netstd2.1.il" />
     </ItemGroup>
     <ItemGroup>
+        <Content Include="EmbeddedAttributes.il" />
         <Content Include="Metadata.il" />
+        <Content Include="ModuleInfo.il" />
     </ItemGroup>
 </Project>

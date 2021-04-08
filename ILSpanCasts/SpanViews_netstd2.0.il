@@ -20,35 +20,11 @@
                                                                                                            14 46 72 61 6D 65 77 6F 72 6B 44 69 73 70 6C 61   
                                                                                                            79 4E 61 6D 65 00 )                               
   #include "Metadata.il"
-  
-  .hash algorithm 0x00008004
-  .ver 1:0:0:0
 }
-.module ILSpanCasts.dll
-
-.imagebase 0x00400000
-.file alignment 0x00000200
-.stackreserve 0x00100000
-.subsystem 0x0003       
-.corflags 0x00000001    
-
-
-.class private auto ansi sealed beforefieldinit Microsoft.CodeAnalysis.EmbeddedAttribute
-       extends [netstandard]System.Attribute
-{
-  .custom instance void [netstandard]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-  .custom instance void Microsoft.CodeAnalysis.EmbeddedAttribute::.ctor() = ( 01 00 00 00 ) 
-  .method public hidebysig specialname rtspecialname 
-          instance void  .ctor() cil managed
-  {
-    
-    .maxstack  8
-    IL_0000:  ldarg.0
-    IL_0001:  call       instance void [netstandard]System.Attribute::.ctor()
-    IL_0006:  ret
-  } 
-
-} 
+ 
+#include "ModuleInfo.il"
+ 
+#include "EmbeddedAttributes.il"
 
 .class private auto ansi sealed beforefieldinit System.Runtime.CompilerServices.IsByRefLikeAttribute
        extends [netstandard]System.Attribute
