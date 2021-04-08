@@ -24,7 +24,7 @@ namespace Tests
                 }
             }
 
-            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).FromSpan(h, w);
+            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).ToReadOnlySpan2D(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
@@ -45,7 +45,7 @@ namespace Tests
                 }
             }
 
-            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).FromSpan(h, w);
+            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).ToReadOnlySpan2D(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);
@@ -69,7 +69,7 @@ namespace Tests
                 }
             }
 
-            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).FromSpan(h, w);
+            ReadOnlySpan2D<int> span2d = ((ReadOnlySpan<int>)buff).ToReadOnlySpan2D(h, w);
             
             Assert.AreEqual(14022, span2d[14, 22]);
             Assert.AreEqual(05013, span2d[05, 13]);

@@ -73,7 +73,7 @@
 {
   .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
   .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T> 
-          FromSpan<T>(valuetype [System.Memory]System.Span`1<!!T> this,
+          ToSpan2D<T>(valuetype [System.Memory]System.Span`1<!!T> this,
                       int32 height,
                       int32 width) cil managed
   {
@@ -110,7 +110,7 @@
   } 
 
   .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> 
-          FromSpan<T>(valuetype [System.Memory]System.ReadOnlySpan`1<!!T> this,
+          ToReadOnlySpan2D<T>(valuetype [System.Memory]System.ReadOnlySpan`1<!!T> this,
                       int32 height,
                       int32 width) cil managed
   {
