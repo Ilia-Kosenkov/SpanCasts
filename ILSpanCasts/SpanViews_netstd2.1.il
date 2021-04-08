@@ -21,7 +21,7 @@
  
 #include "EmbeddedAttributes.il"
 
-.class public abstract auto ansi sealed beforefieldinit ILSpanCasts.Span2DExtensions
+.class public abstract auto ansi sealed beforefieldinit IK.ILSpanCasts.Span2DExtensions
        extends [netstandard]System.Object
 {
   .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
@@ -107,7 +107,7 @@
 
 }
 
-.class public abstract auto ansi sealed beforefieldinit ILSpanCasts.SpanExtensions
+.class public abstract auto ansi sealed beforefieldinit IK.ILSpanCasts.SpanExtensions
        extends [netstandard]System.Object
 {
   .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 

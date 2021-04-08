@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using ILSpanCasts;
+using IK.ILSpanCasts;
 using Microsoft.Toolkit.HighPerformance;
 using NUnit.Framework;
 
