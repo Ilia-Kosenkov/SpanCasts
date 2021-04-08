@@ -5,5 +5,3 @@
 .stackreserve 0x00100000
 .subsystem 0x0003       
 .corflags 0x00000001    
-
-E
