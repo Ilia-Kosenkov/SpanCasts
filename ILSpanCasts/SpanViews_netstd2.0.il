@@ -125,6 +125,67 @@
 
 } 
 
+.class public abstract auto ansi sealed beforefieldinit ILSpanCasts.SpanExtensions
+       extends [netstandard]System.Object
+{
+  .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 )
+  
+  .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T> 
+          ToSpan<T>(!!T[0...,0...] 'array') cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  3
+    .locals init (valuetype ILSpanCasts.SpanView V_0)
+    IL_0000:  ldloca.s   V_0
+    IL_0002:  initobj    ILSpanCasts.SpanView
+    IL_0008:  ldloca.s   V_0
+    IL_000a:  ldarg.0
+    IL_000b:  stfld      object ILSpanCasts.SpanView::Owner
+    IL_0010:  ldloca.s   V_0
+    IL_0012:  ldarg.0
+    IL_0013:  ldarg.0
+    IL_0014:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
+    IL_0019:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object, !!0&)
+    IL_001e:  stfld      native int ILSpanCasts.SpanView::Offset
+    IL_0023:  ldloca.s   V_0
+    IL_0025:  ldarg.0
+    IL_0026:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_002b:  stfld      int32 ILSpanCasts.SpanView::Length
+    IL_0032:  ldloca.s   V_0
+    IL_0034:  call       valuetype [System.Memory]System.Span`1<!!0>& ILSpanCasts.SpanView::AsSpan<!!0>(valuetype ILSpanCasts.SpanView&)
+    IL_0039:  ldobj      valuetype [System.Memory]System.Span`1<!!T>
+    IL_003e:  ret
+  } 
+  
+  .method public hidebysig static valuetype [System.Memory]System.ReadOnlySpan`1<!!T> 
+          ToReadOnlySpan<T>(!!T[0...,0...] 'array') cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  3
+    .locals init (valuetype ILSpanCasts.SpanView V_0)
+    IL_0000:  ldloca.s   V_0
+    IL_0002:  initobj    ILSpanCasts.SpanView
+    IL_0008:  ldloca.s   V_0
+    IL_000a:  ldarg.0
+    IL_000b:  stfld      object ILSpanCasts.SpanView::Owner
+    IL_0010:  ldloca.s   V_0
+    IL_0012:  ldarg.0
+    IL_0013:  ldarg.0
+    IL_0014:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
+    IL_0019:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object, !!0&)
+    IL_001e:  stfld      native int ILSpanCasts.SpanView::Offset
+    IL_0023:  ldloca.s   V_0
+    IL_0025:  ldarg.0
+    IL_0026:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_002b:  stfld      int32 ILSpanCasts.SpanView::Length
+    IL_0032:  ldloca.s   V_0
+    IL_0034:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!!0>& ILSpanCasts.SpanView::AsReadOnlySpan<!!0>(valuetype ILSpanCasts.SpanView&)
+    IL_0039:  ldobj      valuetype [System.Memory]System.ReadOnlySpan`1<!!T>
+    IL_003e:  ret
+  } 
+}
+
+
 .class private sequential ansi sealed beforefieldinit ILSpanCasts.SpanView
        extends [netstandard]System.ValueType
 {
