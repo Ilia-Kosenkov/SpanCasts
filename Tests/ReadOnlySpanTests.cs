@@ -1,5 +1,5 @@
 using System;
-using ILSpanCasts;
+using IK.ILSpanCasts;
 using Microsoft.Toolkit.HighPerformance;
 using NUnit.Framework;
 
