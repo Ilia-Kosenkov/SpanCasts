@@ -17,10 +17,6 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="MinVer" Version="2.3.1">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <Compile Remove="*.il" />
         <Compile Condition="'$(TargetFramework)' == 'netstandard2.0'" Include="SpanViews_netstd2.0.il" />
         <Compile Condition="'$(TargetFramework)' == 'netstandard2.1'" Include="SpanViews_netstd2.1.il" />
