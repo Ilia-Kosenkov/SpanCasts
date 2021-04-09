@@ -177,7 +177,32 @@
     IL_003e:  ret
   } 
   
-   .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T> 
+  .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
+          GetRowMut<T>(!!T[0...,0...] 'array',
+                       int32 row) cil managed aggressiveinlining
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  ldc.i4.0
+    IL_0003:  ldarg.0
+    IL_0004:  brtrue.s   IL_0009
+
+    IL_0006:  ldc.i4.0
+    IL_0007:  br.s       IL_0010
+
+    IL_0009:  ldarg.0
+    IL_000a:  ldc.i4.1
+    IL_000b:  call       instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0010:  call       valuetype [netstandard]System.Span`1<!!0> IK.ILSpanCasts.SpanExtensions::GetRowMut<!!0>(!!0[0...,0...],
+                                                                                                                int32,
+                                                                                                                int32,
+                                                                                                                int32)
+    IL_0015:  ret
+  }
+  
+  .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T> 
           GetRowMut<T>(!!T[0...,0...] 'array',
                        int32 row,
                        int32 start,
@@ -253,7 +278,33 @@
     IL_0086:  throw
   }
   
-   .method public hidebysig static valuetype [System.Memory]System.ReadOnlySpan`1<!!T> 
+  .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
+          GetRow<T>(!!T[0...,0...] 'array',
+                       int32 row) cil managed aggressiveinlining
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  ldc.i4.0
+    IL_0003:  ldarg.0
+    IL_0004:  brtrue.s   IL_0009
+
+    IL_0006:  ldc.i4.0
+    IL_0007:  br.s       IL_0010
+
+    IL_0009:  ldarg.0
+    IL_000a:  ldc.i4.1
+    IL_000b:  call       instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0010:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> IK.ILSpanCasts.SpanExtensions::GetRow<!!0>(!!0[0...,0...],
+                                                                                                                int32,
+                                                                                                                int32,
+                                                                                                                int32)
+    IL_0015:  ret
+  }
+  
+  
+  .method public hidebysig static valuetype [System.Memory]System.ReadOnlySpan`1<!!T> 
           GetRow<T>(!!T[0...,0...] 'array',
                        int32 row,
                        int32 start,
