@@ -13,7 +13,7 @@
   .publickeytoken = (CC 7B 13 FF CD 2D DD 51 )                         
   .ver 4:0:1:1
 }
-.assembly IK.ILSpanCasts.Internal
+.assembly ILSpanCasts
 {
   .custom instance void [netstandard]System.Runtime.Versioning.TargetFrameworkAttribute::.ctor(string) = ( 01 00 19 2E 4E 45 54 53 74 61 6E 64 61 72 64 2C 
                                                                                                            56 65 72 73 69 6F 6E 3D 76 32 2E 30 01 00 54 0E  
