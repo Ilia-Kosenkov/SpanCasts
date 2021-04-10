@@ -302,7 +302,7 @@
                                                                                                                                                  int32,
                                                                                                                                                  int32)
     IL_002b:  ldarg.3
-    IL_002c:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&,
+    IL_002c:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&,
                                                                                                                                               int32)
     IL_0031:  ret
 
@@ -333,6 +333,24 @@
     IL_0064:  ldstr      "array"
     IL_0069:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
     IL_006e:  throw
+  }
+  
+  .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
+          GetRowMut<T>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T> span,
+                       int32 row) cil managed aggressiveinlining
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  ldc.i4.0
+    IL_0003:  ldarga.s   span
+    IL_0005:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Width()
+    IL_000a:  call       valuetype [netstandard]System.Span`1<!!0> IK.ILSpanCasts.SpanExtensions::GetRowMut<!!0>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!0>,
+                                                                                                                int32,
+                                                                                                                int32,
+                                                                                                                int32)
+    IL_000f:  ret
   }
   
   .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
@@ -415,6 +433,24 @@
   
   .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
           GetRow<T>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> span,
+                       int32 row) cil managed aggressiveinlining
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  ldc.i4.0
+    IL_0003:  ldarga.s   span
+    IL_0005:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Width()
+    IL_000a:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> IK.ILSpanCasts.SpanExtensions::GetRow<!!0>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!0>,
+                                                                                                                int32,
+                                                                                                                int32,
+                                                                                                                int32)
+    IL_000f:  ret
+  }
+  
+  .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
+          GetRow<T>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> span,
                        int32 row,
                        int32 start,
                        int32 length) cil managed
@@ -466,10 +502,10 @@
     IL_0042:  ldarga.s   span
     IL_0044:  ldarg.1
     IL_0045:  ldarg.2
-    IL_0046:  call       instance !0& valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Item(int32,
+    IL_0046:  call       instance !0& modreq([netstandard]System.Runtime.InteropServices.InAttribute) valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Item(int32,
                                                                                                                                              int32)
     IL_004b:  ldarg.3
-    IL_004c:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&,
+    IL_004c:  call       valuetype  [netstandard]System.ReadOnlySpan`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&,
                                                                                                                                               int32)
     IL_0051:  ret
 
