@@ -164,55 +164,73 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .maxstack  3
+    .locals init (valuetype [netstandard]System.Span`1<!!T> V_0,
+             valuetype [netstandard]System.Span`1<!!T> V_1)
     IL_0000:  ldarg.0
-    IL_0001:  brfalse.s  IL_004f
+    IL_0001:  brfalse.s  IL_0064
 
     IL_0003:  ldarg.1
     IL_0004:  ldc.i4.0
-    IL_0005:  blt.s      IL_0044
+    IL_0005:  blt.s      IL_0059
 
     IL_0007:  ldarg.1
     IL_0008:  ldarg.0
     IL_0009:  ldc.i4.0
     IL_000a:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_000f:  bge.s      IL_0044
+    IL_000f:  bge.s      IL_0059
 
     IL_0011:  ldarg.2
     IL_0012:  ldc.i4.0
-    IL_0013:  blt.s      IL_0039
+    IL_0013:  blt.s      IL_004e
 
     IL_0015:  ldarg.3
-    IL_0016:  ldarg.0
-    IL_0017:  ldc.i4.1
-    IL_0018:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_001d:  bgt.s      IL_002e
+    IL_0016:  ldc.i4.0
+    IL_0017:  ble.s      IL_0032
 
-    IL_001f:  ldarg.0
-    IL_0020:  ldarg.1
-    IL_0021:  ldarg.2
-    IL_0022:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
+    IL_0019:  ldarg.3
+    IL_001a:  ldarg.0
+    IL_001b:  ldc.i4.1
+    IL_001c:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0021:  bgt.s      IL_0032
+
+    IL_0023:  ldarg.0
+    IL_0024:  ldarg.1
+    IL_0025:  ldarg.2
+    IL_0026:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
                                                                                                                                                  int32,
                                                                                                                                                  int32)
-    IL_0027:  ldarg.3
-    IL_0028:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&,
+    IL_002b:  ldarg.3
+    IL_002c:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&,
                                                                                                                                               int32)
-    IL_002d:  ret
+    IL_0031:  ret
 
-    IL_002e:  ldstr      "length"
-    IL_0033:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0038:  throw
+    IL_0032:  ldarg.3
+    IL_0033:  brtrue.s   IL_0041
 
-    IL_0039:  ldstr      "start"
-    IL_003e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0043:  throw
+    IL_0035:  ldloca.s   V_1
+    IL_0037:  initobj    valuetype [netstandard]System.Span`1<!!T>
+    IL_003d:  ldloc.1
+    IL_003e:  stloc.0
+    IL_003f:  br.s       IL_004c
 
-    IL_0044:  ldstr      "array"
-    IL_0049:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_004e:  throw
+    IL_0041:  ldstr      "length"
+    IL_0046:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_004b:  throw
 
-    IL_004f:  ldstr      "array"
-    IL_0054:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_0059:  throw
+    IL_004c:  ldloc.0
+    IL_004d:  ret
+
+    IL_004e:  ldstr      "start"
+    IL_0053:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0058:  throw
+
+    IL_0059:  ldstr      "array"
+    IL_005e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0063:  throw
+
+    IL_0064:  ldstr      "array"
+    IL_0069:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
+    IL_006e:  throw
   }
   
   .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
@@ -248,54 +266,72 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .maxstack  3
+    .locals init (valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_0,
+             valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_1)
     IL_0000:  ldarg.0
-    IL_0001:  brfalse.s  IL_004f
+    IL_0001:  brfalse.s  IL_0064
 
     IL_0003:  ldarg.1
     IL_0004:  ldc.i4.0
-    IL_0005:  blt.s      IL_0044
+    IL_0005:  blt.s      IL_0059
 
     IL_0007:  ldarg.1
     IL_0008:  ldarg.0
     IL_0009:  ldc.i4.0
     IL_000a:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_000f:  bge.s      IL_0044
+    IL_000f:  bge.s      IL_0059
 
     IL_0011:  ldarg.2
     IL_0012:  ldc.i4.0
-    IL_0013:  blt.s      IL_0039
+    IL_0013:  blt.s      IL_004e
 
     IL_0015:  ldarg.3
-    IL_0016:  ldarg.0
-    IL_0017:  ldc.i4.1
-    IL_0018:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_001d:  bgt.s      IL_002e
+    IL_0016:  ldc.i4.0
+    IL_0017:  ble.s      IL_0032
 
-    IL_001f:  ldarg.0
-    IL_0020:  ldarg.1
-    IL_0021:  ldarg.2
-    IL_0022:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
+    IL_0019:  ldarg.3
+    IL_001a:  ldarg.0
+    IL_001b:  ldc.i4.1
+    IL_001c:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0021:  bgt.s      IL_0032
+
+    IL_0023:  ldarg.0
+    IL_0024:  ldarg.1
+    IL_0025:  ldarg.2
+    IL_0026:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
                                                                                                                                                  int32,
                                                                                                                                                  int32)
-    IL_0027:  ldarg.3
-    IL_0028:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&,
+    IL_002b:  ldarg.3
+    IL_002c:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&,
                                                                                                                                               int32)
-    IL_002d:  ret
+    IL_0031:  ret
 
-    IL_002e:  ldstr      "length"
-    IL_0033:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0038:  throw
+    IL_0032:  ldarg.3
+    IL_0033:  brtrue.s   IL_0041
 
-    IL_0039:  ldstr      "start"
-    IL_003e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0043:  throw
+    IL_0035:  ldloca.s   V_1
+    IL_0037:  initobj    valuetype [netstandard]System.ReadOnlySpan`1<!!T>
+    IL_003d:  ldloc.1
+    IL_003e:  stloc.0
+    IL_003f:  br.s       IL_004c
 
-    IL_0044:  ldstr      "array"
-    IL_0049:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_004e:  throw
+    IL_0041:  ldstr      "length"
+    IL_0046:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_004b:  throw
 
-    IL_004f:  ldstr      "array"
-    IL_0054:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_0059:  throw
+    IL_004c:  ldloc.0
+    IL_004d:  ret
+
+    IL_004e:  ldstr      "start"
+    IL_0053:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0058:  throw
+
+    IL_0059:  ldstr      "array"
+    IL_005e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0063:  throw
+
+    IL_0064:  ldstr      "array"
+    IL_0069:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
+    IL_006e:  throw
   }
 } 

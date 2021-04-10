@@ -211,71 +211,89 @@
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .maxstack  5
     .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0,
-             valuetype IK.ILSpanCasts.Internal.SpanView V_1)
+             valuetype IK.ILSpanCasts.Internal.SpanView V_1,
+             valuetype [System.Memory]System.Span`1<!!T> V_2,
+             valuetype [System.Memory]System.Span`1<!!T> V_3)
     IL_0000:  ldarg.0
-    IL_0001:  brfalse.s  IL_007c
+    IL_0001:  brfalse    IL_0094
 
-    IL_0003:  ldarg.1
-    IL_0004:  ldc.i4.0
-    IL_0005:  blt.s      IL_0071
+    IL_0006:  ldarg.1
+    IL_0007:  ldc.i4.0
+    IL_0008:  blt.s      IL_0089
 
-    IL_0007:  ldarg.1
-    IL_0008:  ldarg.0
-    IL_0009:  ldc.i4.0
-    IL_000a:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_000f:  bge.s      IL_0071
+    IL_000a:  ldarg.1
+    IL_000b:  ldarg.0
+    IL_000c:  ldc.i4.0
+    IL_000d:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0012:  bge.s      IL_0089
 
-    IL_0011:  ldarg.2
-    IL_0012:  ldc.i4.0
-    IL_0013:  blt.s      IL_0066
+    IL_0014:  ldarg.2
+    IL_0015:  ldc.i4.0
+    IL_0016:  blt.s      IL_007e
 
-    IL_0015:  ldarg.3
-    IL_0016:  ldarg.0
-    IL_0017:  ldc.i4.1
-    IL_0018:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_001d:  bgt.s      IL_005b
+    IL_0018:  ldarg.3
+    IL_0019:  ldc.i4.0
+    IL_001a:  ble.s      IL_0062
 
-    IL_001f:  ldloca.s   V_1
-    IL_0021:  initobj    IK.ILSpanCasts.Internal.SpanView
-    IL_0027:  ldloca.s   V_1
-    IL_0029:  ldarg.0
-    IL_002a:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
-    IL_002f:  ldloca.s   V_1
-    IL_0031:  ldarg.0
-    IL_0032:  ldarg.0
-    IL_0033:  ldarg.1
-    IL_0034:  ldarg.2
-    IL_0035:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
+    IL_001c:  ldarg.3
+    IL_001d:  ldarg.0
+    IL_001e:  ldc.i4.1
+    IL_001f:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0024:  bgt.s      IL_0062
+
+    IL_0026:  ldloca.s   V_1
+    IL_0028:  initobj    IK.ILSpanCasts.Internal.SpanView
+    IL_002e:  ldloca.s   V_1
+    IL_0030:  ldarg.0
+    IL_0031:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
+    IL_0036:  ldloca.s   V_1
+    IL_0038:  ldarg.0
+    IL_0039:  ldarg.0
+    IL_003a:  ldarg.1
+    IL_003b:  ldarg.2
+    IL_003c:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
                                                                                                                                                  int32,
                                                                                                                                                  int32)
-    IL_003a:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object,
+    IL_0041:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object,
                                                                                                                                                                       !!0&)
-    IL_003f:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
-    IL_0044:  ldloca.s   V_1
-    IL_0046:  ldarg.3
-    IL_0047:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
-    IL_004c:  ldloc.1
-    IL_004d:  stloc.0
-    IL_004e:  ldloca.s   V_0
-    IL_0050:  call       valuetype [System.Memory]System.Span`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsSpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
-    IL_0055:  ldobj      valuetype [System.Memory]System.Span`1<!!T>
-    IL_005a:  ret
+    IL_0046:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
+    IL_004b:  ldloca.s   V_1
+    IL_004d:  ldarg.3
+    IL_004e:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
+    IL_0053:  ldloc.1
+    IL_0054:  stloc.0
+    IL_0055:  ldloca.s   V_0
+    IL_0057:  call       valuetype [System.Memory]System.Span`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsSpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
+    IL_005c:  ldobj      valuetype [System.Memory]System.Span`1<!!T>
+    IL_0061:  ret
 
-    IL_005b:  ldstr      "length"
-    IL_0060:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0065:  throw
+    IL_0062:  ldarg.3
+    IL_0063:  brtrue.s   IL_0071
 
-    IL_0066:  ldstr      "start"
-    IL_006b:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0070:  throw
+    IL_0065:  ldloca.s   V_3
+    IL_0067:  initobj    valuetype [System.Memory]System.Span`1<!!T>
+    IL_006d:  ldloc.3
+    IL_006e:  stloc.2
+    IL_006f:  br.s       IL_007c
 
-    IL_0071:  ldstr      "array"
+    IL_0071:  ldstr      "length"
     IL_0076:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_007b:  throw
 
-    IL_007c:  ldstr      "array"
-    IL_0081:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_0086:  throw
+    IL_007c:  ldloc.2
+    IL_007d:  ret
+
+    IL_007e:  ldstr      "start"
+    IL_0083:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0088:  throw
+
+    IL_0089:  ldstr      "array"
+    IL_008e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0093:  throw
+
+    IL_0094:  ldstr      "array"
+    IL_0099:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
+    IL_009e:  throw
   }
   
   .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
@@ -313,71 +331,89 @@
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .maxstack  5
     .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0,
-             valuetype IK.ILSpanCasts.Internal.SpanView V_1)
+             valuetype IK.ILSpanCasts.Internal.SpanView V_1,
+             valuetype [System.Memory]System.ReadOnlySpan`1<!!T> V_2,
+             valuetype [System.Memory]System.ReadOnlySpan`1<!!T> V_3)
     IL_0000:  ldarg.0
-    IL_0001:  brfalse.s  IL_007c
+    IL_0001:  brfalse    IL_0094
 
-    IL_0003:  ldarg.1
-    IL_0004:  ldc.i4.0
-    IL_0005:  blt.s      IL_0071
+    IL_0006:  ldarg.1
+    IL_0007:  ldc.i4.0
+    IL_0008:  blt.s      IL_0089
 
-    IL_0007:  ldarg.1
-    IL_0008:  ldarg.0
-    IL_0009:  ldc.i4.0
-    IL_000a:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_000f:  bge.s      IL_0071
+    IL_000a:  ldarg.1
+    IL_000b:  ldarg.0
+    IL_000c:  ldc.i4.0
+    IL_000d:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0012:  bge.s      IL_0089
 
-    IL_0011:  ldarg.2
-    IL_0012:  ldc.i4.0
-    IL_0013:  blt.s      IL_0066
+    IL_0014:  ldarg.2
+    IL_0015:  ldc.i4.0
+    IL_0016:  blt.s      IL_007e
 
-    IL_0015:  ldarg.3
-    IL_0016:  ldarg.0
-    IL_0017:  ldc.i4.1
-    IL_0018:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_001d:  bgt.s      IL_005b
+    IL_0018:  ldarg.3
+    IL_0019:  ldc.i4.0
+    IL_001a:  ble.s      IL_0062
 
-    IL_001f:  ldloca.s   V_1
-    IL_0021:  initobj    IK.ILSpanCasts.Internal.SpanView
-    IL_0027:  ldloca.s   V_1
-    IL_0029:  ldarg.0
-    IL_002a:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
-    IL_002f:  ldloca.s   V_1
-    IL_0031:  ldarg.0
-    IL_0032:  ldarg.0
-    IL_0033:  ldarg.1
-    IL_0034:  ldarg.2
-    IL_0035:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
+    IL_001c:  ldarg.3
+    IL_001d:  ldarg.0
+    IL_001e:  ldc.i4.1
+    IL_001f:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0024:  bgt.s      IL_0062
+
+    IL_0026:  ldloca.s   V_1
+    IL_0028:  initobj    IK.ILSpanCasts.Internal.SpanView
+    IL_002e:  ldloca.s   V_1
+    IL_0030:  ldarg.0
+    IL_0031:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
+    IL_0036:  ldloca.s   V_1
+    IL_0038:  ldarg.0
+    IL_0039:  ldarg.0
+    IL_003a:  ldarg.1
+    IL_003b:  ldarg.2
+    IL_003c:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReferenceAt<!!0>(!!0[0...,0...],
                                                                                                                                                  int32,
                                                                                                                                                  int32)
-    IL_003a:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object,
+    IL_0041:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object,
                                                                                                                                                                       !!0&)
-    IL_003f:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
-    IL_0044:  ldloca.s   V_1
-    IL_0046:  ldarg.3
-    IL_0047:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
-    IL_004c:  ldloc.1
-    IL_004d:  stloc.0
-    IL_004e:  ldloca.s   V_0
-    IL_0050:  call       valuetype [System.Memory]System.Span`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsReadOnlySpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
-    IL_0055:  ldobj      valuetype [System.Memory]System.Span`1<!!T>
-    IL_005a:  ret
+    IL_0046:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
+    IL_004b:  ldloca.s   V_1
+    IL_004d:  ldarg.3
+    IL_004e:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
+    IL_0053:  ldloc.1
+    IL_0054:  stloc.0
+    IL_0055:  ldloca.s   V_0
+    IL_0057:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsSpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
+    IL_005c:  ldobj      valuetype [System.Memory]System.ReadOnlySpan`1<!!T>
+    IL_0061:  ret
 
-    IL_005b:  ldstr      "length"
-    IL_0060:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0065:  throw
+    IL_0062:  ldarg.3
+    IL_0063:  brtrue.s   IL_0071
 
-    IL_0066:  ldstr      "start"
-    IL_006b:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
-    IL_0070:  throw
+    IL_0065:  ldloca.s   V_3
+    IL_0067:  initobj    valuetype [System.Memory]System.ReadOnlySpan`1<!!T>
+    IL_006d:  ldloc.3
+    IL_006e:  stloc.2
+    IL_006f:  br.s       IL_007c
 
-    IL_0071:  ldstr      "array"
+    IL_0071:  ldstr      "length"
     IL_0076:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_007b:  throw
 
-    IL_007c:  ldstr      "array"
-    IL_0081:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_0086:  throw
+    IL_007c:  ldloc.2
+    IL_007d:  ret
+
+    IL_007e:  ldstr      "start"
+    IL_0083:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0088:  throw
+
+    IL_0089:  ldstr      "array"
+    IL_008e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0093:  throw
+
+    IL_0094:  ldstr      "array"
+    IL_0099:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
+    IL_009e:  throw
   }
 }
 
