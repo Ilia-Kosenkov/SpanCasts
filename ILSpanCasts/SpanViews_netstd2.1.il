@@ -334,4 +334,160 @@
     IL_0069:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
     IL_006e:  throw
   }
+  
+  .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
+          GetRowMut<T>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T> span,
+                       int32 row,
+                       int32 start,
+                       int32 length) cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  3
+    .locals init (valuetype [netstandard]System.Span`1<!!T> V_0)
+    IL_0000:  ldarga.s   span
+    IL_0002:  call       instance bool valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_IsEmpty()
+    IL_0007:  brtrue.s   IL_0073
+
+    IL_0009:  ldarg.1
+    IL_000a:  ldc.i4.0
+    IL_000b:  blt.s      IL_0068
+
+    IL_000d:  ldarg.1
+    IL_000e:  ldarga.s   span
+    IL_0010:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Height()
+    IL_0015:  bge.s      IL_0068
+
+    IL_0017:  ldarg.2
+    IL_0018:  ldc.i4.0
+    IL_0019:  blt.s      IL_005d
+
+    IL_001b:  ldarg.2
+    IL_001c:  ldarga.s   span
+    IL_001e:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Width()
+    IL_0023:  bge.s      IL_005d
+
+    IL_0025:  ldarg.3
+    IL_0026:  brtrue.s   IL_0032
+
+    IL_0028:  ldloca.s   V_0
+    IL_002a:  initobj    valuetype [netstandard]System.Span`1<!!T>
+    IL_0030:  ldloc.0
+    IL_0031:  ret
+
+    IL_0032:  ldarg.3
+    IL_0033:  ldc.i4.0
+    IL_0034:  ble.s      IL_0052
+
+    IL_0036:  ldarg.3
+    IL_0037:  ldarga.s   span
+    IL_0039:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Width()
+    IL_003e:  ldarg.2
+    IL_003f:  sub
+    IL_0040:  bgt.s      IL_0052
+
+    IL_0042:  ldarga.s   span
+    IL_0044:  ldarg.1
+    IL_0045:  ldarg.2
+    IL_0046:  call       instance !0& valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Item(int32,
+                                                                                                                                             int32)
+    IL_004b:  ldarg.3
+    IL_004c:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&,
+                                                                                                                                              int32)
+    IL_0051:  ret
+
+    IL_0052:  ldstr      "length"
+    IL_0057:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_005c:  throw
+
+    IL_005d:  ldstr      "start"
+    IL_0062:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0067:  throw
+
+    IL_0068:  ldstr      "row"
+    IL_006d:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0072:  throw
+
+    IL_0073:  ldloca.s   V_0
+    IL_0075:  initobj    valuetype [netstandard]System.Span`1<!!T>
+    IL_007b:  ldloc.0
+    IL_007c:  ret
+  }
+  
+  .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
+          GetRow<T>(valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> span,
+                       int32 row,
+                       int32 start,
+                       int32 length) cil managed
+  {
+    .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .maxstack  3
+    .locals init (valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_0)
+    IL_0000:  ldarga.s   span
+    IL_0002:  call       instance bool valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_IsEmpty()
+    IL_0007:  brtrue.s   IL_0073
+
+    IL_0009:  ldarg.1
+    IL_000a:  ldc.i4.0
+    IL_000b:  blt.s      IL_0068
+
+    IL_000d:  ldarg.1
+    IL_000e:  ldarga.s   span
+    IL_0010:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Height()
+    IL_0015:  bge.s      IL_0068
+
+    IL_0017:  ldarg.2
+    IL_0018:  ldc.i4.0
+    IL_0019:  blt.s      IL_005d
+
+    IL_001b:  ldarg.2
+    IL_001c:  ldarga.s   span
+    IL_001e:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Width()
+    IL_0023:  bge.s      IL_005d
+
+    IL_0025:  ldarg.3
+    IL_0026:  brtrue.s   IL_0032
+
+    IL_0028:  ldloca.s   V_0
+    IL_002a:  initobj    valuetype [netstandard]System.ReadOnlySpan`1<!!T>
+    IL_0030:  ldloc.0
+    IL_0031:  ret
+
+    IL_0032:  ldarg.3
+    IL_0033:  ldc.i4.0
+    IL_0034:  ble.s      IL_0052
+
+    IL_0036:  ldarg.3
+    IL_0037:  ldarga.s   span
+    IL_0039:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Width()
+    IL_003e:  ldarg.2
+    IL_003f:  sub
+    IL_0040:  bgt.s      IL_0052
+
+    IL_0042:  ldarga.s   span
+    IL_0044:  ldarg.1
+    IL_0045:  ldarg.2
+    IL_0046:  call       instance !0& valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Item(int32,
+                                                                                                                                             int32)
+    IL_004b:  ldarg.3
+    IL_004c:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&,
+                                                                                                                                              int32)
+    IL_0051:  ret
+
+    IL_0052:  ldstr      "length"
+    IL_0057:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_005c:  throw
+
+    IL_005d:  ldstr      "start"
+    IL_0062:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0067:  throw
+
+    IL_0068:  ldstr      "row"
+    IL_006d:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_0072:  throw
+
+    IL_0073:  ldloca.s   V_0
+    IL_0075:  initobj    valuetype [netstandard]System.ReadOnlySpan`1<!!T>
+    IL_007b:  ldloc.0
+    IL_007c:  ret
+  }
 } 
