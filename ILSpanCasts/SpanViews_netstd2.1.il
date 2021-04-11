@@ -39,9 +39,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span2D<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>!
     .param [1] // First argument
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
     
     .maxstack  8
     IL_0000:  ldarga.s   this
@@ -84,9 +84,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // ReadOnlySpan2D<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>!
     .param [1] // First argument
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // ReadOnlySpan<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
     .maxstack  8
     IL_0000:  ldarga.s   this
     IL_0002:  call       instance bool valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_IsEmpty()
@@ -126,9 +126,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // T?[,]!
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s  IL_1000
@@ -139,9 +139,8 @@
     IL_0006:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&, int32)
     IL_0007:  ret
     
-    IL_1000: ldstr      "array"
-    IL_1001: newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_1002: throw
+    IL_1000: call       valuetype [netstandard]System.Span`1<!0> valuetype [netstandard]System.Span`1<!!T>::get_Empty()
+    IL_1001: ret
   } 
   
   .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
@@ -149,9 +148,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // ReadOnlySpan<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // T?[,]!
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s  IL_1000
@@ -162,9 +161,8 @@
     IL_0006:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&, int32)
     IL_0007:  ret
     
-    IL_1000: ldstr      "array"
-    IL_1001: newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_1002: throw
+    IL_1000: call       valuetype [netstandard]System.ReadOnlySpan`1<!0> valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Empty()
+    IL_1001: ret
   } 
   
  .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
@@ -173,9 +171,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // T?[,]!
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s IL_1000
@@ -192,9 +190,8 @@
                                                                                                                 int32)
     IL_0015:  ret
     
-    IL_1000:  ldstr      "array"
-    IL_1001:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_1002:  throw
+    IL_1000: call       valuetype [netstandard]System.Span`1<!0> valuetype [netstandard]System.Span`1<!!T>::get_Empty()
+    IL_1001: ret
   }
   
   .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
@@ -205,14 +202,14 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // T?[,]!
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  3
     .locals init (valuetype [netstandard]System.Span`1<!!T> V_0,
              valuetype [netstandard]System.Span`1<!!T> V_1)
     IL_0000:  ldarg.0
-    IL_0001:  brfalse.s  IL_0064
+    IL_0001:  brfalse.s  IL_1000
 
     IL_0003:  ldarg.1
     IL_0004:  ldc.i4.0
@@ -269,13 +266,12 @@
     IL_0053:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0058:  throw
 
-    IL_0059:  ldstr      "array"
+    IL_0059:  ldstr      "row"
     IL_005e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0063:  throw
 
-    IL_0064:  ldstr      "array"
-    IL_0069:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_006e:  throw
+    IL_1000: call       valuetype [netstandard]System.Span`1<!0> valuetype [netstandard]System.Span`1<!!T>::get_Empty()
+    IL_1001: ret
   }
   
   .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
@@ -284,9 +280,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // T?[,]!
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s IL_1000
@@ -303,9 +299,8 @@
                                                                                                                 int32)
     IL_0015:  ret
     
-    IL_1000:  ldstr      "array"
-    IL_1001:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_1002:  throw
+    IL_1000: call       valuetype [netstandard]System.ReadOnlySpan`1<!0> valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Empty()
+    IL_1001: ret
   }
   
   .method public hidebysig static valuetype [netstandard]System.ReadOnlySpan`1<!!T> 
@@ -316,14 +311,14 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // ReadOnlySpan<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // T?[,]!
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  3
     .locals init (valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_0,
              valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_1)
     IL_0000:  ldarg.0
-    IL_0001:  brfalse.s  IL_0064
+    IL_0001:  brfalse.s  IL_1000
 
     IL_0003:  ldarg.1
     IL_0004:  ldc.i4.0
@@ -380,13 +375,12 @@
     IL_0053:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0058:  throw
 
-    IL_0059:  ldstr      "array"
+    IL_0059:  ldstr      "row"
     IL_005e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0063:  throw
 
-    IL_0064:  ldstr      "array"
-    IL_0069:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_006e:  throw
+    IL_1000: call       valuetype [netstandard]System.ReadOnlySpan`1<!0> valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Empty()
+    IL_1001: ret
   }
   
   .method public hidebysig static valuetype [netstandard]System.Span`1<!!T> 
@@ -395,9 +389,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0] // Return type
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>!
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
@@ -419,9 +413,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0]
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // Span<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>!
     .maxstack  3
     .locals init (valuetype [netstandard]System.Span`1<!!T> V_0)
     IL_0000:  ldarga.s   span
@@ -499,9 +493,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0]
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // ReadOnlySpan<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>!
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
@@ -523,9 +517,9 @@
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
     .param [0]
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 00 02 00 00 )  // ReadOnlySpan<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
     .param [1] // First argument;
-    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>!
     .maxstack  3
     .locals init (valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_0)
     IL_0000:  ldarga.s   span
