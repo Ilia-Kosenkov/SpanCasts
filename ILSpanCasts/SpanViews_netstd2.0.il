@@ -70,6 +70,14 @@
     IL_0002:  call       instance bool valuetype [System.Memory]System.Span`1<!!T>::get_IsEmpty()
     IL_0007:  brtrue.s   IL_002f
 
+    IL_0100:  ldarg.1
+    IL_0101:  ldc.i4.0
+    IL_0102:  blt.s      IL_1000
+    
+    IL_0200:  ldarg.2
+    IL_0201:  ldc.i4.0
+    IL_0202:  blt.s      IL_2000
+
     IL_0009:  ldarg.2
     IL_000a:  ldarg.1
     IL_000b:  mul
@@ -93,6 +101,14 @@
 
     IL_002f:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Empty()
     IL_0034:  ret
+    
+    IL_1000:  ldstr      "height"
+    IL_1001:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_1002:  throw
+    
+    IL_2000:  ldstr      "width"
+    IL_2001:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_2002:  throw
   } 
 
   .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T> 
@@ -109,6 +125,14 @@
     IL_0000:  ldarga.s   this
     IL_0002:  call       instance bool valuetype [System.Memory]System.ReadOnlySpan`1<!!T>::get_IsEmpty()
     IL_0007:  brtrue.s   IL_002f
+    
+    IL_0100:  ldarg.1
+    IL_0101:  ldc.i4.0
+    IL_0102:  blt.s      IL_1000
+    
+    IL_0200:  ldarg.2
+    IL_0201:  ldc.i4.0
+    IL_0202:  blt.s      IL_2000
 
     IL_0009:  ldarg.2
     IL_000a:  ldarg.1
@@ -133,6 +157,14 @@
 
     IL_002f:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Empty()
     IL_0034:  ret
+    
+    IL_1000:  ldstr      "height"
+    IL_1001:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_1002:  throw
+    
+    IL_2000:  ldstr      "width"
+    IL_2001:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
+    IL_2002:  throw
   } 
 
 
