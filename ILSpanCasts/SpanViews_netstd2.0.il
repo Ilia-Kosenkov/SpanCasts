@@ -293,17 +293,23 @@
 
     IL_0006:  ldarg.1
     IL_0007:  ldc.i4.0
-    IL_0008:  blt.s      IL_0089
+    IL_0008:  blt        IL_0089
 
     IL_000a:  ldarg.1
     IL_000b:  ldarg.0
     IL_000c:  ldc.i4.0
     IL_000d:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_0012:  bge.s      IL_0089
+    IL_0012:  bge        IL_0089
 
     IL_0014:  ldarg.2
     IL_0015:  ldc.i4.0
     IL_0016:  blt.s      IL_007e
+    
+    IL_200a:  ldarg.2
+    IL_200b:  ldarg.0
+    IL_200c:  ldc.i4.1
+    IL_200d:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_2012:  bge.s      IL_007e
 
     IL_0018:  ldarg.3
     IL_0019:  ldc.i4.0
@@ -313,6 +319,8 @@
     IL_001d:  ldarg.0
     IL_001e:  ldc.i4.1
     IL_001f:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0120:  ldarg.2
+    IL_0121:  sub
     IL_0024:  bgt.s      IL_0062
 
     IL_0026:  ldloca.s   V_1
@@ -420,17 +428,23 @@
 
     IL_0006:  ldarg.1
     IL_0007:  ldc.i4.0
-    IL_0008:  blt.s      IL_0089
+    IL_0008:  blt        IL_0089
 
     IL_000a:  ldarg.1
     IL_000b:  ldarg.0
     IL_000c:  ldc.i4.0
     IL_000d:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
-    IL_0012:  bge.s      IL_0089
+    IL_0012:  bge        IL_0089
 
     IL_0014:  ldarg.2
     IL_0015:  ldc.i4.0
     IL_0016:  blt.s      IL_007e
+    
+    IL_200a:  ldarg.2
+    IL_200b:  ldarg.0
+    IL_200c:  ldc.i4.1
+    IL_200d:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_2012:  bge.s        IL_007e
 
     IL_0018:  ldarg.3
     IL_0019:  ldc.i4.0
@@ -440,6 +454,8 @@
     IL_001d:  ldarg.0
     IL_001e:  ldc.i4.1
     IL_001f:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
+    IL_0120:  ldarg.2
+    IL_0121:  sub
     IL_0024:  bgt.s      IL_0062
 
     IL_0026:  ldloca.s   V_1
