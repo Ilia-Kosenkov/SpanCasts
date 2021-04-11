@@ -47,13 +47,23 @@
 .class public abstract auto ansi sealed beforefieldinit IK.ILSpanCasts.SpanExtensions
        extends [netstandard]System.Object
 {
-  .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+  // 01 00 - Preamble
+  // XX 00 00 00 - int32 number of params T[] elements (if present)
+  // XX 00 - int16 Number of named arguments
+  .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 )   // Empty ctor
+  .custom instance void System.Runtime.CompilerServices.NullableContextAttribute::.ctor(uint8) = ( 01 00 02 00 00 )  // NullableContext((byte)2)
+  .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8) = ( 01 00 00 00 00 )         // Nullable((byte) 0)
+  
   .method public hidebysig static valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T> 
           ToSpan2D<T>(valuetype [System.Memory]System.Span`1<!!T> this,
                       int32 height,
                       int32 width) cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  //Span<T?>!
     
     .maxstack  8
     IL_0000:  ldarga.s   this
@@ -91,7 +101,10 @@
                       int32 width) cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
-    
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00  )  // ReadOnlySpan<T?>!
     .maxstack  8
     IL_0000:  ldarga.s   this
     IL_0002:  call       instance bool valuetype [System.Memory]System.ReadOnlySpan`1<!!T>::get_IsEmpty()
@@ -127,8 +140,15 @@
           ToSpan<T>(!!T[0...,0...] 'array') cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00)  // Span2D<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  3
     .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0)
+    IL_0100:  ldarg.0
+    IL_0101:  brfalse.s  IL_1000
+    
     IL_0000:  ldloca.s   V_0
     IL_0002:  initobj    IK.ILSpanCasts.Internal.SpanView
     IL_0008:  ldloca.s   V_0
@@ -148,14 +168,24 @@
     IL_0034:  call       valuetype [System.Memory]System.Span`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsSpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
     IL_0039:  ldobj      valuetype [System.Memory]System.Span`1<!!T>
     IL_003e:  ret
+    
+    IL_1000:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Empty()
+    IL_1001:  ret
   } 
   
   .method public hidebysig static valuetype [System.Memory]System.ReadOnlySpan`1<!!T> 
           ToReadOnlySpan<T>(!!T[0...,0...] 'array') cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  3
     .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0)
+    IL_0100:  ldarg.0
+    IL_0101:  brfalse.s  IL_1000
+    
     IL_0000:  ldloca.s   V_0
     IL_0002:  initobj    IK.ILSpanCasts.Internal.SpanView
     IL_0008:  ldloca.s   V_0
@@ -175,6 +205,9 @@
     IL_0034:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsReadOnlySpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
     IL_0039:  ldobj      valuetype [System.Memory]System.ReadOnlySpan`1<!!T>
     IL_003e:  ret
+    
+    IL_1000:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Empty()
+    IL_1001:  ret
   } 
   
   .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T> 
@@ -182,17 +215,18 @@
                        int32 row) cil managed aggressiveinlining
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  //Span<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  8
+    IL_0100:  ldarg.0
+    IL_0101:  brfalse.s  IL_1000
+    
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  ldc.i4.0
     IL_0003:  ldarg.0
-    IL_0004:  brtrue.s   IL_0009
-
-    IL_0006:  ldc.i4.0
-    IL_0007:  br.s       IL_0010
-
-    IL_0009:  ldarg.0
     IL_000a:  ldc.i4.1
     IL_000b:  call       instance int32 [netstandard]System.Array::GetLength(int32)
     IL_0010:  call       valuetype [System.Memory]System.Span`1<!!0> IK.ILSpanCasts.SpanExtensions::GetRowMut<!!0>(!!0[0...,0...],
@@ -200,6 +234,9 @@
                                                                                                                 int32,
                                                                                                                 int32)
     IL_0015:  ret
+    
+    IL_1000:  call       valuetype [System.Memory]System.Span`1<!0> valuetype [System.Memory]System.Span`1<!!T>::get_Empty()
+    IL_1001:  ret
   }
   
   .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T> 
@@ -209,13 +246,18 @@
                        int32 length) cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  //Span<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  5
     .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0,
              valuetype IK.ILSpanCasts.Internal.SpanView V_1,
              valuetype [System.Memory]System.Span`1<!!T> V_2,
              valuetype [System.Memory]System.Span`1<!!T> V_3)
+             
     IL_0000:  ldarg.0
-    IL_0001:  brfalse    IL_0094
+    IL_0001:  brfalse    IL_1000
 
     IL_0006:  ldarg.1
     IL_0007:  ldc.i4.0
@@ -287,13 +329,12 @@
     IL_0083:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0088:  throw
 
-    IL_0089:  ldstr      "array"
+    IL_0089:  ldstr      "row"
     IL_008e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0093:  throw
 
-    IL_0094:  ldstr      "array"
-    IL_0099:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_009e:  throw
+    IL_1000:  call       valuetype [System.Memory]System.Span`1<!0> valuetype [System.Memory]System.Span`1<!!T>::get_Empty()
+    IL_1001:  ret
   }
   
   .method public hidebysig static valuetype [System.Memory]System.ReadOnlySpan`1<!!T> 
@@ -301,16 +342,17 @@
                        int32 row) cil managed aggressiveinlining
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  8
+    IL_0100:  ldarg.0
+    IL_0101:  brfalse.s  IL_1000
+    
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  ldc.i4.0
-    IL_0003:  ldarg.0
-    IL_0004:  brtrue.s   IL_0009
-
-    IL_0006:  ldc.i4.0
-    IL_0007:  br.s       IL_0010
-
     IL_0009:  ldarg.0
     IL_000a:  ldc.i4.1
     IL_000b:  call       instance int32 [netstandard]System.Array::GetLength(int32)
@@ -319,6 +361,9 @@
                                                                                                                 int32,
                                                                                                                 int32)
     IL_0015:  ret
+    
+    IL_1000:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!0> valuetype [System.Memory]System.ReadOnlySpan`1<!!T>::get_Empty()
+    IL_1001:  ret
   }
   
   
@@ -329,6 +374,10 @@
                        int32 length) cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 02 00 00 )  // T?[,]?
     .maxstack  5
     .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0,
              valuetype IK.ILSpanCasts.Internal.SpanView V_1,
@@ -407,13 +456,12 @@
     IL_0083:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0088:  throw
 
-    IL_0089:  ldstr      "array"
+    IL_0089:  ldstr      "row"
     IL_008e:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0093:  throw
 
-    IL_0094:  ldstr      "array"
-    IL_0099:  newobj     instance void [netstandard]System.ArgumentNullException::.ctor(string)
-    IL_009e:  throw
+    IL_0094:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!0> valuetype [System.Memory]System.ReadOnlySpan`1<!!T>::get_Empty()
+    IL_1001:  ret
   }
   
   .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T> 
@@ -421,6 +469,10 @@
                        int32 row)  cil managed aggressiveinlining
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>!
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
@@ -442,6 +494,10 @@
                        int32 length) cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // Span2D<T?>!
     .maxstack  4
     .locals init (valuetype [System.Memory]System.Span`1<!!T> V_0,
              valuetype IK.ILSpanCasts.Internal.Span2DView& V_1,
@@ -552,6 +608,10 @@
                        int32 row) cil managed aggressiveinlining
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>!
     .maxstack  8
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
@@ -573,6 +633,10 @@
                        int32 length) cil managed
   {
     .custom instance void [netstandard]System.Runtime.CompilerServices.ExtensionAttribute::.ctor() = ( 01 00 00 00 ) 
+    .param [0]
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan<T?>!
+    .param [1] // First argument;
+    .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 02 00 00 )  // ReadOnlySpan2D<T?>!
     .maxstack  4
     .locals init (valuetype [System.Memory]System.ReadOnlySpan`1<!!T> V_0,
              valuetype IK.ILSpanCasts.Internal.Span2DView& V_1,
