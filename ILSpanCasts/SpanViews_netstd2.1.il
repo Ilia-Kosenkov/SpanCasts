@@ -48,6 +48,11 @@
     IL_0002:  call       instance bool valuetype [netstandard]System.Span`1<!!T>::get_IsEmpty()
     IL_0007:  brtrue.s   IL_0036
 
+    IL_0300:  ldarg.1
+    IL_0301:  ldarg.2
+    IL_0302:  mul
+    IL_0304:  brfalse.s   IL_0036
+
     IL_0100:  ldarg.1
     IL_0101:  ldc.i4.0
     IL_0102:  blt.s      IL_1000
@@ -107,6 +112,11 @@
     IL_0000:  ldarga.s   this
     IL_0002:  call       instance bool valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_IsEmpty()
     IL_0007:  brtrue.s   IL_0036
+
+    IL_0300:  ldarg.1
+    IL_0301:  ldarg.2
+    IL_0302:  mul
+    IL_0304:  brfalse.s   IL_0036
 
     IL_0100:  ldarg.1
     IL_0101:  ldc.i4.0
@@ -238,10 +248,12 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T[,]?
     .maxstack  3
-    .locals init (valuetype [netstandard]System.Span`1<!!T> V_0,
-             valuetype [netstandard]System.Span`1<!!T> V_1)
+
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s  IL_1000
+
+    IL_0100:  ldarg.3
+    IL_0101:  brfalse.s  IL_1000
 
     IL_0003:  ldarg.1
     IL_0004:  ldc.i4.0
@@ -265,7 +277,7 @@
 
     IL_0015:  ldarg.3
     IL_0016:  ldc.i4.0
-    IL_0017:  ble.s      IL_0032
+    IL_0017:  ble.s      IL_0041
 
     IL_0019:  ldarg.3
     IL_001a:  ldarg.0
@@ -273,7 +285,7 @@
     IL_001c:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
     IL_011d:  ldarg.2
     IL_011e:  sub
-    IL_0021:  bgt.s      IL_0032
+    IL_0021:  bgt.s      IL_0041
 
     IL_0023:  ldarg.0
     IL_0024:  ldarg.1
@@ -286,21 +298,9 @@
                                                                                                                                               int32)
     IL_0031:  ret
 
-    IL_0032:  ldarg.3
-    IL_0033:  brtrue.s   IL_0041
-
-    IL_0035:  ldloca.s   V_1
-    IL_0037:  initobj    valuetype [netstandard]System.Span`1<!!T>
-    IL_003d:  ldloc.1
-    IL_003e:  stloc.0
-    IL_003f:  br.s       IL_004c
-
     IL_0041:  ldstr      "length"
     IL_0046:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_004b:  throw
-
-    IL_004c:  ldloc.0
-    IL_004d:  ret
 
     IL_004e:  ldstr      "start"
     IL_0053:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
@@ -355,10 +355,12 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T[,]?
     .maxstack  3
-    .locals init (valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_0,
-             valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_1)
+
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s  IL_1000
+
+    IL_0100:  ldarg.3
+    IL_0101:  brfalse.s  IL_1000
 
     IL_0003:  ldarg.1
     IL_0004:  ldc.i4.0
@@ -382,7 +384,7 @@
 
     IL_0015:  ldarg.3
     IL_0016:  ldc.i4.0
-    IL_0017:  ble.s      IL_0032
+    IL_0017:  ble.s      IL_0041
 
     IL_0019:  ldarg.3
     IL_001a:  ldarg.0
@@ -390,7 +392,7 @@
     IL_001c:  callvirt   instance int32 [netstandard]System.Array::GetLength(int32)
     IL_011d:  ldarg.2
     IL_011e:  sub
-    IL_0021:  bgt.s      IL_0032
+    IL_0021:  bgt.s      IL_0041
 
     IL_0023:  ldarg.0
     IL_0024:  ldarg.1
@@ -403,21 +405,9 @@
                                                                                                                                               int32)
     IL_0031:  ret
 
-    IL_0032:  ldarg.3
-    IL_0033:  brtrue.s   IL_0041
-
-    IL_0035:  ldloca.s   V_1
-    IL_0037:  initobj    valuetype [netstandard]System.ReadOnlySpan`1<!!T>
-    IL_003d:  ldloc.1
-    IL_003e:  stloc.0
-    IL_003f:  br.s       IL_004c
-
     IL_0041:  ldstr      "length"
     IL_0046:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_004b:  throw
-
-    IL_004c:  ldloc.0
-    IL_004d:  ret
 
     IL_004e:  ldstr      "start"
     IL_0053:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
@@ -465,11 +455,13 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 01 00 00 )  // Span2D<T>
     .maxstack  3
-    .locals init (valuetype [netstandard]System.Span`1<!!T> V_0)
     IL_0000:  ldarga.s   span
     IL_0002:  call       instance bool valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_IsEmpty()
-    IL_0007:  brtrue.s   IL_0073
-
+    IL_0007:  brtrue.s   IL_007b
+    
+    IL_0100:  ldarg.3
+    IL_0101:  brfalse.s  IL_007b
+    
     IL_0009:  ldarg.1
     IL_000a:  ldc.i4.0
     IL_000b:  blt.s      IL_0068
@@ -487,14 +479,6 @@
     IL_001c:  ldarga.s   span
     IL_001e:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Width()
     IL_0023:  bge.s      IL_005d
-
-    IL_0025:  ldarg.3
-    IL_0026:  brtrue.s   IL_0032
-
-    IL_0028:  ldloca.s   V_0
-    IL_002a:  initobj    valuetype [netstandard]System.Span`1<!!T>
-    IL_0030:  ldloc.0
-    IL_0031:  ret
 
     IL_0032:  ldarg.3
     IL_0033:  ldc.i4.0
@@ -529,9 +513,7 @@
     IL_006d:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0072:  throw
 
-    IL_0073:  ldloca.s   V_0
-    IL_0075:  initobj    valuetype [netstandard]System.Span`1<!!T>
-    IL_007b:  ldloc.0
+    IL_007b:  call       valuetype [netstandard]System.Span`1<!0> valuetype [netstandard]System.Span`1<!!T>::get_Empty()
     IL_007c:  ret
   }
   
@@ -569,11 +551,14 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 01 00 00 )  // ReadOnlySpan2D<T>
     .maxstack  3
-    .locals init (valuetype [netstandard]System.ReadOnlySpan`1<!!T> V_0)
+    
     IL_0000:  ldarga.s   span
     IL_0002:  call       instance bool valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_IsEmpty()
-    IL_0007:  brtrue.s   IL_0073
-
+    IL_0007:  brtrue.s   IL_007b
+    
+    IL_0100:  ldarg.3
+    IL_0101:  brfalse.s  IL_007b
+    
     IL_0009:  ldarg.1
     IL_000a:  ldc.i4.0
     IL_000b:  blt.s      IL_0068
@@ -591,14 +576,6 @@
     IL_001c:  ldarga.s   span
     IL_001e:  call       instance int32 valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Width()
     IL_0023:  bge.s      IL_005d
-
-    IL_0025:  ldarg.3
-    IL_0026:  brtrue.s   IL_0032
-
-    IL_0028:  ldloca.s   V_0
-    IL_002a:  initobj    valuetype [netstandard]System.ReadOnlySpan`1<!!T>
-    IL_0030:  ldloc.0
-    IL_0031:  ret
 
     IL_0032:  ldarg.3
     IL_0033:  ldc.i4.0
@@ -633,9 +610,7 @@
     IL_006d:  newobj     instance void [netstandard]System.ArgumentOutOfRangeException::.ctor(string)
     IL_0072:  throw
 
-    IL_0073:  ldloca.s   V_0
-    IL_0075:  initobj    valuetype [netstandard]System.ReadOnlySpan`1<!!T>
-    IL_007b:  ldloc.0
+    IL_007b:  call       valuetype [netstandard]System.ReadOnlySpan`1<!0> valuetype [netstandard]System.ReadOnlySpan`1<!!T>::get_Empty()
     IL_007c:  ret
   }
 } 
