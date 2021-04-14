@@ -172,12 +172,20 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T[,]?
     .maxstack  8
+    .locals (int32 V_0)
+
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s  IL_1000
+    
+    IL_0100:  ldarg.0
+    IL_0101:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0102:  stloc.0
+    IL_0103:  ldloc.0
+    IL_0104:  brfalse.s  IL_1000
+    
     IL_0002:  ldarg.0
     IL_0003:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
-    IL_0004:  ldarg.0
-    IL_0005:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0004:  ldloc.0
     IL_0006:  call       valuetype [netstandard]System.Span`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateSpan<!!0>(!!0&, int32)
     IL_0007:  ret
     
@@ -194,12 +202,19 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T?[,]?
     .maxstack  8
+    .locals (int32 V_0)
     IL_0000:  ldarg.0
     IL_0001:  brfalse.s  IL_1000
+    
+    IL_0100:  ldarg.0
+    IL_0101:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0102:  stloc.0
+    IL_0103:  ldloc.0
+    IL_0104:  brfalse.s  IL_1000
+    
     IL_0002:  ldarg.0
     IL_0003:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
-    IL_0004:  ldarg.0
-    IL_0005:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0004:  ldloc.0
     IL_0006:  call       valuetype [netstandard]System.ReadOnlySpan`1<!!0> [netstandard]System.Runtime.InteropServices.MemoryMarshal::CreateReadOnlySpan<!!0>(!!0&, int32)
     IL_0007:  ret
     

@@ -187,9 +187,15 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T[,]?
     .maxstack  3
-    .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0)
+    .locals (valuetype IK.ILSpanCasts.Internal.SpanView V_0, int32 V_1)
     IL_0100:  ldarg.0
     IL_0101:  brfalse.s  IL_1000
+    
+    IL_0200:  ldarg.0
+    IL_0201:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0202:  stloc.1
+    IL_0203:  ldloc.1
+    IL_0204:  brfalse.s  IL_1000
     
     IL_0000:  ldloca.s   V_0
     IL_0002:  initobj    IK.ILSpanCasts.Internal.SpanView
@@ -203,8 +209,7 @@
     IL_0019:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object, !!0&)
     IL_001e:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
     IL_0023:  ldloca.s   V_0
-    IL_0025:  ldarg.0
-    IL_0026:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0025:  ldloc.1
     IL_002b:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
     IL_0032:  ldloca.s   V_0
     IL_0034:  call       valuetype [System.Memory]System.Span`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsSpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
@@ -224,9 +229,15 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T[,]?
     .maxstack  3
-    .locals init (valuetype IK.ILSpanCasts.Internal.SpanView V_0)
+    .locals (valuetype IK.ILSpanCasts.Internal.SpanView V_0, int32 V_1)
     IL_0100:  ldarg.0
     IL_0101:  brfalse.s  IL_1000
+    
+    IL_0200:  ldarg.0
+    IL_0201:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0202:  stloc.1
+    IL_0203:  ldloc.1
+    IL_0204:  brfalse.s  IL_1000
     
     IL_0000:  ldloca.s   V_0
     IL_0002:  initobj    IK.ILSpanCasts.Internal.SpanView
@@ -240,8 +251,7 @@
     IL_0019:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object, !!0&)
     IL_001e:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
     IL_0023:  ldloca.s   V_0
-    IL_0025:  ldarg.0
-    IL_0026:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0025:  ldloc.1
     IL_002b:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
     IL_0032:  ldloca.s   V_0
     IL_0034:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsReadOnlySpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
