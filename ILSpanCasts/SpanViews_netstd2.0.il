@@ -187,37 +187,42 @@
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T[,]?
     .maxstack  3
-    .locals (valuetype IK.ILSpanCasts.Internal.SpanView V_0, int32 V_1)
-    IL_0100:  ldarg.0
-    IL_0101:  brfalse.s  IL_1000
-    
-    IL_0200:  ldarg.0
-    IL_0201:  callvirt   instance int32 [netstandard]System.Array::get_Length()
-    IL_0202:  stloc.1
-    IL_0203:  ldloc.1
-    IL_0204:  brfalse.s  IL_1000
-    
-    IL_0000:  ldloca.s   V_0
-    IL_0002:  initobj    IK.ILSpanCasts.Internal.SpanView
-    IL_0008:  ldloca.s   V_0
-    IL_000a:  ldarg.0
-    IL_000b:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
-    IL_0010:  ldloca.s   V_0
-    IL_0012:  ldarg.0
-    IL_0013:  ldarg.0
-    IL_0014:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
-    IL_0019:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object, !!0&)
-    IL_001e:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
-    IL_0023:  ldloca.s   V_0
-    IL_0025:  ldloc.1
-    IL_002b:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
-    IL_0032:  ldloca.s   V_0
-    IL_0034:  call       valuetype [System.Memory]System.Span`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsSpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
-    IL_0039:  ldobj      valuetype [System.Memory]System.Span`1<!!T>
-    IL_003e:  ret
-    
-    IL_1000:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Span2D`1<!!T>::get_Empty()
-    IL_1001:  ret
+    .locals init (int32 V_0,
+             valuetype IK.ILSpanCasts.Internal.SpanView V_1,
+             valuetype IK.ILSpanCasts.Internal.SpanView V_2)
+    IL_0000:  ldarg.0
+    IL_0001:  brfalse.s  IL_0047
+
+    IL_0003:  ldarg.0
+    IL_0004:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0009:  stloc.0
+    IL_000a:  ldloc.0
+    IL_000b:  brfalse.s  IL_0047
+
+    IL_000d:  ldloca.s   V_2
+    IL_000f:  initobj    IK.ILSpanCasts.Internal.SpanView
+    IL_0015:  ldloca.s   V_2
+    IL_0017:  ldarg.0
+    IL_0018:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
+    IL_001d:  ldloca.s   V_2
+    IL_001f:  ldarg.0
+    IL_0020:  ldarg.0
+    IL_0021:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
+    IL_0026:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object,
+                                                                                                                                                                      !!0&)
+    IL_002b:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
+    IL_0030:  ldloca.s   V_2
+    IL_0032:  ldloc.0
+    IL_0033:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
+    IL_0038:  ldloc.2
+    IL_0039:  stloc.1
+    IL_003a:  ldloca.s   V_1
+    IL_003c:  call       valuetype [System.Memory]System.Span`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsSpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
+    IL_0041:  ldobj      valuetype [System.Memory]System.Span`1<!!T>
+    IL_0046:  ret
+
+    IL_0047:  call       valuetype [System.Memory]System.Span`1<!0> valuetype [System.Memory]System.Span`1<!!T>::get_Empty()
+    IL_004c:  ret
   } 
   
   .method public hidebysig static valuetype [System.Memory]System.ReadOnlySpan`1<!!T> 
@@ -228,38 +233,43 @@
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 01 01 00 00)  // ReadOnlySpan2D<T>
     .param [1] // First argument;
     .custom instance void System.Runtime.CompilerServices.NullableAttribute::.ctor(uint8[]) = ( 01 00 02 00 00 00 02 01 00 00 )  // T[,]?
-    .maxstack  3
-    .locals (valuetype IK.ILSpanCasts.Internal.SpanView V_0, int32 V_1)
-    IL_0100:  ldarg.0
-    IL_0101:  brfalse.s  IL_1000
-    
-    IL_0200:  ldarg.0
-    IL_0201:  callvirt   instance int32 [netstandard]System.Array::get_Length()
-    IL_0202:  stloc.1
-    IL_0203:  ldloc.1
-    IL_0204:  brfalse.s  IL_1000
-    
-    IL_0000:  ldloca.s   V_0
-    IL_0002:  initobj    IK.ILSpanCasts.Internal.SpanView
-    IL_0008:  ldloca.s   V_0
-    IL_000a:  ldarg.0
-    IL_000b:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
-    IL_0010:  ldloca.s   V_0
-    IL_0012:  ldarg.0
-    IL_0013:  ldarg.0
-    IL_0014:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
-    IL_0019:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object, !!0&)
-    IL_001e:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
-    IL_0023:  ldloca.s   V_0
-    IL_0025:  ldloc.1
-    IL_002b:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
-    IL_0032:  ldloca.s   V_0
-    IL_0034:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsReadOnlySpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
-    IL_0039:  ldobj      valuetype [System.Memory]System.ReadOnlySpan`1<!!T>
-    IL_003e:  ret
-    
-    IL_1000:  call       valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!0> valuetype [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ReadOnlySpan2D`1<!!T>::get_Empty()
-    IL_1001:  ret
+       .maxstack  3
+    .locals init (int32 V_0,
+             valuetype IK.ILSpanCasts.Internal.SpanView V_1,
+             valuetype IK.ILSpanCasts.Internal.SpanView V_2)
+    IL_0000:  ldarg.0
+    IL_0001:  brfalse.s  IL_0047
+
+    IL_0003:  ldarg.0
+    IL_0004:  callvirt   instance int32 [netstandard]System.Array::get_Length()
+    IL_0009:  stloc.0
+    IL_000a:  ldloc.0
+    IL_000b:  brfalse.s  IL_0047
+
+    IL_000d:  ldloca.s   V_2
+    IL_000f:  initobj    IK.ILSpanCasts.Internal.SpanView
+    IL_0015:  ldloca.s   V_2
+    IL_0017:  ldarg.0
+    IL_0018:  stfld      object IK.ILSpanCasts.Internal.SpanView::Owner
+    IL_001d:  ldloca.s   V_2
+    IL_001f:  ldarg.0
+    IL_0020:  ldarg.0
+    IL_0021:  call       !!0& [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.ArrayExtensions::DangerousGetReference<!!0>(!!0[0...,0...])
+    IL_0026:  call       native int [Microsoft.Toolkit.HighPerformance]Microsoft.Toolkit.HighPerformance.Helpers.ObjectMarshal::DangerousGetObjectDataByteOffset<!!0>(object,
+                                                                                                                                                                      !!0&)
+    IL_002b:  stfld      native int IK.ILSpanCasts.Internal.SpanView::Offset
+    IL_0030:  ldloca.s   V_2
+    IL_0032:  ldloc.0
+    IL_0033:  stfld      int32 IK.ILSpanCasts.Internal.SpanView::Length
+    IL_0038:  ldloc.2
+    IL_0039:  stloc.1
+    IL_003a:  ldloca.s   V_1
+    IL_003c:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!!0>& IK.ILSpanCasts.Internal.SpanView::AsReadOnlySpan<!!0>(valuetype IK.ILSpanCasts.Internal.SpanView&)
+    IL_0041:  ldobj      valuetype [System.Memory]System.ReadOnlySpan`1<!!T>
+    IL_0046:  ret
+
+    IL_0047:  call       valuetype [System.Memory]System.ReadOnlySpan`1<!0> valuetype [System.Memory]System.ReadOnlySpan`1<!!T>::get_Empty()
+    IL_004c:  ret
   } 
   
   .method public hidebysig static valuetype [System.Memory]System.Span`1<!!T> 
