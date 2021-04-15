@@ -7,13 +7,13 @@
   // --- The following custom attribute is added automatically, do not uncomment -------
   //  .custom instance void [netstandard]System.Diagnostics.DebuggableAttribute::.ctor(valuetype [netstandard]System.Diagnostics.DebuggableAttribute/DebuggingModes) = ( 01 00 02 00 00 00 00 00 ) 
   // Version strings:
-  // 07 30 2E 35 2E 32 2E 30
-  // 05 30 2E 35 2E 32     
-  // 0:5:2:0
+  // 07 30 2E 35 2E 33 2E 30
+  // 05 30 2E 35 2E 33     
+  // 0:5:3:0
   .custom instance void [netstandard]System.Reflection.AssemblyCompanyAttribute::.ctor(string) = ( 01 00 0B 49 4C 53 70 61 6E 43 61 73 74 73 00 00 ) 
   .custom instance void [netstandard]System.Reflection.AssemblyConfigurationAttribute::.ctor(string) = ( 01 00 07 52 65 6C 65 61 73 65 00 00 )             
-  .custom instance void [netstandard]System.Reflection.AssemblyFileVersionAttribute::.ctor(string) = ( 01 00 07 30 2E 35 2E 32 2E 30 00 00 )             // <-
-  .custom instance void [netstandard]System.Reflection.AssemblyInformationalVersionAttribute::.ctor(string) = ( 01 00 05 30 2E 35 2E 32 00 00 )          // <-        
+  .custom instance void [netstandard]System.Reflection.AssemblyFileVersionAttribute::.ctor(string) = ( 01 00 07 30 2E 35 2E 33 2E 30 00 00 )             // <-
+  .custom instance void [netstandard]System.Reflection.AssemblyInformationalVersionAttribute::.ctor(string) = ( 01 00 05 30 2E 35 2E 33 00 00 )          // <-        
   .custom instance void [netstandard]System.Reflection.AssemblyProductAttribute::.ctor(string) = ( 01 00 0B 49 4C 53 70 61 6E 43 61 73 74 73 00 00 ) 
   .custom instance void [netstandard]System.Reflection.AssemblyTitleAttribute::.ctor(string) = ( 01 00 0B 49 4C 53 70 61 6E 43 61 73 74 73 00 00 ) 
   .custom instance void [netstandard]System.Reflection.AssemblyMetadataAttribute::.ctor(string, string) = ( 01 00 0D 52 65 70 6F 73 69 74 6F 72 79 55 72 6C 
@@ -21,7 +21,7 @@
                                                                                                             63 6F 6D 2F 49 6C 69 61 2D 4B 6F 73 65 6E 6B 6F
                                                                                                             76 2F 53 70 61 6E 43 61 73 74 73)
   .hash algorithm 0x00008004
-  .ver 0:5:2:0
+  .ver 0:5:3:0
 
 
 

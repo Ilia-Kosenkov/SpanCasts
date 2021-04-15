@@ -6,6 +6,7 @@
     </PropertyGroup>
     <PropertyGroup>
       <PackageId>SpanCasts</PackageId>
+      <Version>0.5.3</Version>
       <Authors>Ilia Kosenkov</Authors>
       <PackageDescription>Backwards-compatible casts of Span to Span2D.</PackageDescription>
       <RepositoryUrl>https://github.com/Ilia-Kosenkov/SpanCasts</RepositoryUrl>
